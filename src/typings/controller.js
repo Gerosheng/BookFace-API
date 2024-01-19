@@ -1,8 +1,8 @@
 import Service from "./service.js"
 
 class Controller {
-    constructor() {
-        this.service = new Service();
+    constructor(Service) {
+        this.service = Service;
     }
 
     getHandler = (req, res) => {
