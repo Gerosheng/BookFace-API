@@ -3,7 +3,7 @@ import express from 'express'
 class Router {
     constructor(){
         this.router = express.Router();
-        this.routes = [method, path, localMiddleware];
+        this.routes = [path, method, handler, localMiddleware];
         this.controller = new Controller();
         this.initializeRoutes();
     }
