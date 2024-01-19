@@ -3,7 +3,7 @@ import cors from "cors";
 import helmet from "helmet";
 import morgan from "morgan";
 import path from "path";
-import Database from "./src/typings/database.js";
+import { databaseSingleton } from "./src/typings/database.js";
 import Server from "./src/typings/server.js";
 import { PORT, DB_URI } from "./src/configuration/config.js";
 import { fileURLToPath } from "url";
@@ -22,7 +22,7 @@ const globalMiddlewares = [
 ];
 
 /* DATABASE INSTANCE */
-const MongoDB = new Database(DB_URI);
+const MongoDB = databaseSingleton.getInstanceDB(DB_URI);
 
 /* SERVER INSTANCE */
 const server = new Server(app, MongoDB, PORT);

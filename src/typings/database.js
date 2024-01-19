@@ -1,6 +1,24 @@
 import mongoose from 'mongoose'
 
-export default class Database {
+export const databaseSingleton = (() => {
+    let instanceDB;
+
+    const createInstanceDB = (dbURI) => {
+        const database = new Database(dbURI);
+        return database;
+    };
+
+    return {
+        getInstanceDB: () => {
+            if (!instanceDB) {
+                instanceDB = createInstanceDB();
+            }
+            return instanceDB;
+        },
+    };
+})();
+
+class Database {
     constructor(dbURI){
         this.connectionString = dbURI || ''
     }

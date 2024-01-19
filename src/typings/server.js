@@ -18,7 +18,6 @@ export default class Server {
     }
     /* INIT DATABASE */
     initDatabase() {
-        const dbURI = process.env.DB_URI;
         return this.database.connectDB()
     };
 
